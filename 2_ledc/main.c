@@ -1,6 +1,7 @@
 /*
     描述： main.c 函数，业务逻辑执行的地方
     Version:1.0   date:2020-10-30
+    Version:1.1    date:2020-10-31 确定了进入C的makefile格式 0X87800000
     Author:yanzong
 */
 
@@ -36,7 +37,7 @@ void led_init(void)
     SW_PAD_GPIO1_IO03 = 0X10B0;
 
     /* 3、初始化 GPIO, GPIO1_IO03 设置为输出 */
-    GPIO1_GDIR = 0X0000008;
+    GPIO1_GDIR = 0X8;
 
     /* 4、设置 GPIO1_IO03 输出低电平，打开 LED0 */
     GPIO1_DR = 0X0;
@@ -77,10 +78,10 @@ int main(void)
     clk_enable(); /* 使能所有的时钟 */
     led_init(); /* 初始化 led */
     while(1) {
-        led_off(); /* 关闭 LED */
+        led_on(); /* 打开 LED */
         delay(500); /* 延时大约 500ms */
 
-        led_on(); /* 打开 LED */
+        led_off(); /* 关闭 LED */
         delay(500); /* 延时大约 500ms */
     }
 
